@@ -1,0 +1,215 @@
+﻿@{
+    Layout = "~/Views/Shared/_shippingLayout.cshtml";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/css/Shipping/TaskDetails.css" asp-append-version="true" />
+}
+@section Scripts {
+    <script src="~/js/Shipping/TaskDetails.js" asp-append-version="true"></script>
+}
+<div class="p-6">
+    <!-- Order Details Card -->
+    <div class="main-card" data-aos="fade-up">
+        <div class="card-header">
+            <h3 class="text-2xl font-bold flex items-center">
+                <i class="fas fa-info-circle ml-3"></i>
+                معلومات الطلب والشحنة
+            </h3>
+        </div>
+        <div class="card-content">
+            <div class="detail-grid">
+                <div class="detail-item">
+                    <div class="detail-label">رقم الطلب</div>
+                    <div class="detail-value">ORD-2025-005</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">اسم العميل</div>
+                    <div class="detail-value">شركة التقنيات المتطورة</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">موظف الاستيراد</div>
+                    <div class="detail-value">أحمد محمد سالم</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">نوع البضاعة</div>
+                    <div class="detail-value">أجهزة إلكترونية</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">الوزن الإجمالي</div>
+                    <div class="detail-value">2.5 طن</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">الأبعاد</div>
+                    <div class="detail-value">3m × 2m × 1.5m</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">بلد المنشأ</div>
+                    <div class="detail-value">الصين</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">ميناء الوصول</div>
+                    <div class="detail-value">ميناء العقبة</div>
+                </div>
+            </div>
+            <!-- Files from Import and Clearance -->
+            <div class="mt-6">
+                <h4 class="text-lg font-bold text-primary-color mb-4">الملفات المرفقة من الأقسام السابقة:</h4>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                        <i class="fas fa-file-pdf text-blue-500 text-2xl mb-2"></i>
+                        <p class="font-semibold">ملف الاستيراد الأساسي</p>
+                        <button class="text-blue-600 text-sm underline mt-2">تنزيل</button>
+                    </div>
+                    <div class="p-4 bg-purple-50 border border-purple-200 rounded-lg">
+                        <i class="fas fa-file-alt text-purple-500 text-2xl mb-2"></i>
+                        <p class="font-semibold">ملف التخليص الجمركي</p>
+                        <button class="text-purple-600 text-sm underline mt-2">تنزيل</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Comments Section -->
+    <div class="main-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="card-header">
+            <h3 class="text-2xl font-bold flex items-center">
+                <i class="fas fa-comments ml-3"></i>
+                التواصل مع قسم الاستيراد
+            </h3>
+        </div>
+        <div class="card-content">
+            <div class="comments-section">
+                <h4 class="text-lg font-bold text-yellow-800 mb-4">
+                    <i class="fas fa-exclamation-triangle ml-2"></i>
+                    قسم حيوي للتنسيق - استخدم هذا القسم لإبلاغ قسم الاستيراد بالمستجدات
+                </h4>
+                <!-- Existing Comments -->
+                <div class="comment-item">
+                    <div class="comment-header">
+                        <span class="comment-author">أحمد محمد (الاستيراد)</span>
+                        <span class="comment-date">21 يوليو 2025 - 16:30</span>
+                    </div>
+                    <div class="comment-text">تم إحالة الطلب لقسم الشحن. البضاعة جاهزة في المخزن ويمكن ترتيب الشحن.</div>
+                </div>
+                <div class="comment-item">
+                    <div class="comment-header">
+                        <span class="comment-author">محمد العلي (الشحن)</span>
+                        <span class="comment-date">21 يوليو 2025 - 17:15</span>
+                    </div>
+                    <div class="comment-text">المواعيد المتاحة في المخزن هي 25/7 و 26/7. الرجاء تأكيد الموعد المناسب مع المصنع.</div>
+                </div>
+                <!-- Add New Comment -->
+                <div class="mt-6">
+                    <h5 class="font-bold text-primary-color mb-3">إضافة تعليق جديد:</h5>
+                    <textarea 
+                        class="comment-input" 
+                        id="newComment" 
+                        placeholder="اكتب تعليقك هنا... مثل: تم التواصل مع شركة النقل، أو تحديث المواعيد، أو أي استفسارات..."
+                    ></textarea>
+                    <button class="action-btn btn-primary mt-3" onclick="addComment()">
+                        <i class="fas fa-paper-plane"></i>
+                        إرسال التعليق
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Shipping Actions -->
+    <div class="main-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="card-header">
+            <h3 class="text-2xl font-bold flex items-center">
+                <i class="fas fa-cogs ml-3"></i>
+                إجراءات الشحن
+            </h3>
+        </div>
+        <div class="card-content">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Status Update -->
+                <div>
+                    <h4 class="text-lg font-bold text-primary-color mb-4">تحديث حالة الشحن:</h4>
+                    <div class="form-group">
+                        <label class="form-label">الحالة الحالية</label>
+                        <select class="status-select" id="shippingStatus">
+                            <option value="coordinating" selected>جاري التنسيق</option>
+                            <option value="contacting_warehouse">التواصل مع المخازن</option>
+                            <option value="waiting_confirmation">بانتظار تأكيد الحجز</option>
+                            <option value="booked">تم الحجز</option>
+                            <option value="in_transit">قيد النقل</option>
+                            <option value="delivered">تم التسليم</option>
+                        </select>
+                    </div>
+                    <button class="action-btn btn-warning" onclick="updateStatus()">
+                        <i class="fas fa-sync-alt"></i>
+                        تحديث الحالة
+                    </button>
+                </div>
+                <!-- Final Report -->
+                <div>
+                    <h4 class="text-lg font-bold text-primary-color mb-4">التقرير النهائي:</h4>
+                    <p class="text-gray-600 mb-4">عند انتهاء جميع إجراءات الشحن، ارفع التقرير النهائي</p>
+                    <button class="action-btn btn-success" onclick="openFinalReportModal()">
+                        <i class="fas fa-file-upload"></i>
+                        رفع تقرير الشحن النهائي
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Back Button -->
+    <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+        <a href="/Shipping/Dashboard" class="action-btn btn-secondary">
+            <i class="fas fa-arrow-right"></i>
+            العودة للوحة التحكم
+        </a>
+    </div>
+</div>
+<!-- Final Report Modal -->
+<div id="finalReportModal" class="modal">
+    <div class="modal-content">
+        <div class="text-center mb-6">
+            <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-file-upload text-2xl text-orange-500"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-primary-color mb-2">رفع تقرير الشحن النهائي</h3>
+            <p class="text-gray-600">أدخل البيانات النهائية وارفع التقرير لإكمال مهمة الشحن</p>
+        </div>
+        <div class="space-y-6">
+            <!-- File Upload -->
+            <div class="form-group">
+                <label class="form-label">رفع ملف التقرير (بوليصة الشحن PDF)</label>
+                <div class="upload-area" id="reportUploadArea" onclick="document.getElementById('reportFileInput').click()">
+                    <i class="fas fa-cloud-upload-alt text-4xl text-gray-400 mb-4"></i>
+                    <p class="text-gray-600 mb-2">اضغط هنا أو اسحب ملف التقرير</p>
+                    <p class="text-sm text-gray-400">PDF, DOC, DOCX (حتى 10MB)</p>
+                    <input type="file" id="reportFileInput" style="display: none;" accept=".pdf,.doc,.docx" onchange="handleReportUpload(this)">
+                </div>
+                <div id="uploadedReport" style="display: none;" class="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <i class="fas fa-file-check text-green-500 ml-2"></i>
+                            <span id="reportFileName" class="text-green-800"></span>
+                        </div>
+                        <button onclick="removeReportFile()" class="text-red-500 hover:text-red-700">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Additional Notes -->
+            <div class="form-group">
+                <label class="form-label">ملاحظات إضافية</label>
+                <textarea class="comment-input" id="additionalNotes" placeholder="أي ملاحظات إضافية حول الشحنة..." rows="3"></textarea>
+            </div>
+        </div>
+        <div class="flex space-x-4 mt-8">
+            <button class="action-btn btn-success flex-1" onclick="completeShippingTask()">
+                <i class="fas fa-check-circle"></i>
+                إكمال مهمة الشحن
+            </button>
+            <button class="action-btn btn-secondary flex-1" onclick="closeModal()">
+                <i class="fas fa-times"></i>
+                إلغاء
+            </button>
+        </div>
+    </div>
+</div>

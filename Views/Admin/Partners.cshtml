@@ -1,0 +1,223 @@
+﻿@{
+    ViewData["Title"] = "Partners";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/Partners.css" asp-append-version="true" />
+}
+
+@section Scripts {
+    <script src="~/js/Partners.js" asp-append-version="true" defer></script>
+}
+
+
+<!-- المحتوى الرئيسي -->
+<div class="main-content" id="mainContent">
+    <!-- شريط التنقل العلوي -->
+    <div>
+        <div class="d-flex justify-content-between align-items-center">
+        </div>
+    </div>
+    <!-- شريط التنقل العلوي مع صورة الأدمن على اليسار -->
+    <div class="topbar">
+
+
+
+        <div class="container-fluid py-4">
+            <!-- بطاقات الإحصائيات -->
+            <!-- <div class="row mb-4">
+              <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card stat-card">
+                  <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                      <div>
+                        <h6 class="mb-2 text-muted">إجمالي الشركاء</h6>
+                        <h3 class="mb-0">24 شريك</h3>
+                        <p class="mb-0 text-success small">
+                          <i class="fas fa-arrow-up me-1"></i> 3 شركاء جدد
+                        </p>
+                      </div>
+                      <div class="card-icon">
+                        <i class="fas fa-handshake"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card stat-card">
+                  <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                      <div>
+                        <h6 class="mb-2 text-muted">شركاء محليون</h6>
+                        <h3 class="mb-0">12 شريك</h3>
+                        <p class="mb-0 text-primary small">
+                          <i class="fas fa-building me-1"></i> 50%
+                        </p>
+                      </div>
+                      <div class="card-icon primary">
+                        <i class="fas fa-map-marker-alt"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card stat-card">
+                  <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                      <div>
+                        <h6 class="mb-2 text-muted">شركاء دوليون</h6>
+                        <h3 class="mb-0">12 شريك</h3>
+                        <p class="mb-0 text-info small">
+                          <i class="fas fa-globe me-1"></i> 50%
+                        </p>
+                      </div>
+                      <div class="card-icon warning">
+                        <i class="fas fa-globe-asia"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card stat-card">
+                  <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                      <div>
+                        <h6 class="mb-2 text-muted">نشطون هذا الشهر</h6>
+                        <h3 class="mb-0">18 شريك</h3>
+                        <p class="mb-0 text-success small">
+                          <i class="fas fa-check-circle me-1"></i> 75%
+                        </p>
+                      </div>
+                      <div class="card-icon danger">
+                        <i class="fas fa-chart-line"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+            <!-- عنوان الصفحة وأزرار التحكم -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h2 class="mb-0">إدارة الشركات المتعاونة</h2>
+                        <button class="btn btn-primary btn-add" data-bs-toggle="modal" data-bs-target="#addCompanyModal">
+                            <i class="fas fa-plus me-2"></i>إضافة شركة جديدة
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- جدول الشركات المتعاونة -->
+            <div class="container my-4">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-body p-0">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-hover text-center">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>اسم الشركة</th>
+
+                                                <th>الوصف</th>
+                                                <th>البلد</th>
+                                                <th>الإجراءات</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody> <!-- سنملأه ديناميكيًا بالجافا سكريبت -->
+
+                                    </table>
+                                </div>
+
+                                <!-- الترقيم الصفحي -->
+                                <nav class="mt-4 px-4">
+                                    <ul class="pagination justify-content-center">
+                                        <li class="page-item disabled"><a class="page-link" href="#">السابق</a></li>
+                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">التالي</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- نافذة إضافة شركة -->
+            <div class="modal fade" id="addCompanyModal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">إضافة شركة جديدة</h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="addCompanyForm">
+                                <div class="mb-3">
+                                    <label class="form-label">اسم الشركة <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="companyName" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">الوصف</label>
+                                    <textarea class="form-control" id="companyDescription" rows="3"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">البلد</label>
+                                    <input type="text" class="form-control" id="companyCountry">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" data-bs-dismiss="modal">إلغاء</button>
+                            <button class="btn btn-primary" onclick="addCompany()">حفظ</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- نافذة تعديل شركة -->
+            <div class="modal fade" id="editCompanyModal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">تعديل بيانات الشركة</h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="editCompanyForm">
+                                <div class="mb-3">
+                                    <label class="form-label">اسم الشركة <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="editCompanyName" value="شركة النقل السريع" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">الوصف</label>
+                                    <textarea class="form-control" id="editCompanyDescription" rows="3">شركة متخصصة في النقل البري والشحن الداخلي بأسعار تنافسية</textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">البلد</label>
+                                    <input type="text" class="form-control" id="editCompanyCountry" value="فلسطين">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" data-bs-dismiss="modal">إلغاء</button>
+                            <button class="btn btn-primary" onclick="saveCompany()">حفظ التعديلات</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+      </div>  
+</div>

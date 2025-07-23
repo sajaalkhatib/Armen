@@ -1,0 +1,148 @@
+﻿@{
+    Layout = "~/Views/Shared/_ImportLayout.cshtml";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/css/Import/CustomsCodes.css" asp-append-version="true" />
+}
+
+@section Scripts {
+    <script src="~/js/Import/CustomsCodes.js" asp-append-version="true"></script>
+}
+
+<!-- Notifications Toggle -->
+<button class="notifications-toggle" onclick="toggleNotifications()" id="notificationsToggle">
+    <i class="fas fa-bell"></i>
+    <span class="notification-badge" id="notificationBadge">3</span>
+</button>
+
+<!-- Notifications Container -->
+<div class="notification-container" id="notificationContainer" style="display: none;">
+    <div class="notification new" id="notification1">
+        <button class="notification-close" onclick="closeNotification('notification1')">×</button>
+        <div class="notification-header">
+            <span class="notification-title">رسالة من قسم الشحن</span>
+            <span class="notification-time">منذ دقيقتين</span>
+        </div>
+        <div class="notification-content">
+            <strong>محمد العلي (الشحن):</strong> المواعيد المتاحة في المخزن هي 25/7 و 26/7. الرجاء تأكيد الموعد المناسب مع المصنع - الطلب #ORD-2025-005
+        </div>
+    </div>
+
+    <div class="notification new" id="notification2">
+        <button class="notification-close" onclick="closeNotification('notification2')">×</button>
+        <div class="notification-header">
+            <span class="notification-title">تحديث حالة الشحن</span>
+            <span class="notification-time">منذ 15 دقيقة</span>
+        </div>
+        <div class="notification-content">
+            تم تحديث حالة الطلب #ORD-2025-003 إلى "قيد النقل" - رقم التتبع: TRK-2025-ABC123
+        </div>
+    </div>
+
+    <div class="notification" id="notification3">
+        <button class="notification-close" onclick="closeNotification('notification3')">×</button>
+        <div class="notification-header">
+            <span class="notification-title">استفسار من قسم الشحن</span>
+            <span class="notification-time">منذ ساعة</span>
+        </div>
+        <div class="notification-content">
+            يرجى مراجعة وزن الطلب #ORD-2025-007 - يبدو أن هناك اختلاف مع البيانات المدخلة
+        </div>
+    </div>
+</div>
+
+<!-- Main Content -->
+<main class="flex-1 transition-all duration-300" id="mainContent">
+    <!-- Top Navigation -->
+    <nav class="bg-white shadow-sm p-4 mb-8" data-aos="fade-down">
+        <div class="flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-primary-color flex items-center">
+                <i class="fas fa-database text-blue-500 ml-3"></i>
+                قاعدة بيانات الأكواد الجمركية وHS Codes
+            </h1>
+            <div class="flex items-center space-x-2">
+                <img class="w-10 h-10 rounded-full border-2 border-accent-color" src="https://i.pravatar.cc/100?img=3" alt="صورة موظف الاستيراد">
+                <div>
+                    <span class="font-semibold text-primary-color block">أحمد محمد سالم</span>
+                    <span class="text-xs text-gray-500">موظف الاستيراد</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Search Section -->
+    <div class="main-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="card-header">
+            <h3 class="text-xl font-bold flex items-center">
+                <i class="fas fa-search ml-3"></i>
+                البحث في قاعدة البيانات
+            </h3>
+        </div>
+        <div class="card-content">
+            <div class="search-container">
+                <input type="text"
+                       class="search-input"
+                       placeholder="ابحث عن منتج، كود HS، أو فئة..."
+                       id="searchInput">
+                <i class="fas fa-search search-icon"></i>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Quick Reference -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8" data-aos="fade-up" data-aos-delay="300">
+        <!-- Common HS Codes -->
+        <div class="main-card">
+            <div class="card-header">
+                <h3 class="text-xl font-bold flex items-center">
+                    <i class="fas fa-star ml-3"></i>
+                    الأكواد الأكثر استخداماً
+                </h3>
+            </div>
+            <div class="card-content">
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center p-4 bg-blue-50 rounded-lg">
+                        <div>
+                            <div class="font-bold text-blue-800">8517.12</div>
+                            <div class="text-sm text-gray-600">الهواتف المحمولة</div>
+                        </div>
+                        <button class="action-btn btn-primary text-sm" onclick="viewDetails('8517.12')">
+                            تفاصيل
+                        </button>
+                    </div>
+                    <div class="flex justify-between items-center p-4 bg-green-50 rounded-lg">
+                        <div>
+                            <div class="font-bold text-green-800">8471.30</div>
+                            <div class="text-sm text-gray-600">أجهزة الكمبيوتر المحمولة</div>
+                        </div>
+                        <button class="action-btn btn-success text-sm" onclick="viewDetails('8471.30')">
+                            تفاصيل
+                        </button>
+                    </div>
+                    <div class="flex justify-between items-center p-4 bg-purple-50 rounded-lg">
+                        <div>
+                            <div class="font-bold text-purple-800">6203.42</div>
+                            <div class="text-sm text-gray-600">بناطيل رجالية قطنية</div>
+                        </div>
+                        <button class="action-btn btn-info text-sm" onclick="viewDetails('6203.42')">
+                            تفاصيل
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Back Button -->
+        <div class="text-center mt-8" data-aos="fade-up" data-aos-delay="400">
+            <a href="dashboard.html" class="action-btn btn-secondary">
+                <i class="fas fa-arrow-right"></i>
+                العودة للوحة التحكم
+            </a>
+        </div>
+    </div>
+</main>

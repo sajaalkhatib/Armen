@@ -1,0 +1,195 @@
+﻿@{
+    ViewData["Title"] = "الملف الشخصي - سارة محمود";
+    Layout = "~/Views/Shared/_AccountingLayout.cshtml";
+}
+
+@section Styles {
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/Accounting/Profile.css" asp-append-version="true">
+}
+
+<!-- Top Navigation -->
+<nav class="bg-white shadow-sm p-4 mb-8" data-aos="fade-down">
+    <div class="flex justify-between items-center">
+        <h1 class="text-2xl font-bold text-primary-color flex items-center">
+            <i class="fas fa-user-circle text-yellow-500 ml-3"></i>
+            الملف الشخصي
+        </h1>
+        <div class="flex items-center space-x-4">
+            <div class="relative">
+                <button class="p-2 text-gray-600 hover:text-gold-color transition-colors" onclick="toggleNotifications()">
+                    <i class="fas fa-bell text-xl"></i>
+                    <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">5</span>
+                </button>
+
+                <!-- Notification Dropdown -->
+                <div class="notification-dropdown" id="notificationDropdown">
+                    <div class="notification-header">
+                        <div class="flex justify-between items-center">
+                            <h4 class="font-bold">الإشعارات</h4>
+                            <span class="badge">5 جديد</span>
+                        </div>
+                    </div>
+
+                    <div class="notification-item unread" onclick="markAsRead(this)">
+                        <div class="notification-content">
+                            <div class="notification-icon new-task">
+                                <i class="fas fa-plus"></i>
+                            </div>
+                            <div class="notification-text">
+                                <div class="notification-title">تم تعيين طلب جديد</div>
+                                <div class="notification-desc">طلب #ORD-2025-001 من شركة النخبة التجارية</div>
+                                <div class="notification-time">منذ 5 دقائق</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="notification-item unread" onclick="markAsRead(this)">
+                        <div class="notification-content">
+                            <div class="notification-icon urgent">
+                                <i class="fas fa-exclamation"></i>
+                            </div>
+                            <div class="notification-text">
+                                <div class="notification-title">طلب عاجل يتطلب مراجعة فورية</div>
+                                <div class="notification-desc">طلب #ORD-2025-003 - أولوية عالية</div>
+                                <div class="notification-time">منذ 15 دقيقة</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="notification-item unread" onclick="markAsRead(this)">
+                        <div class="notification-content">
+                            <div class="notification-icon new-task">
+                                <i class="fas fa-plus"></i>
+                            </div>
+                            <div class="notification-text">
+                                <div class="notification-title">تم تعيين طلب جديد</div>
+                                <div class="notification-desc">طلب #ORD-2025-002 من مؤسسة الأمل للاستيراد</div>
+                                <div class="notification-time">منذ 30 دقيقة</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="notification-item" onclick="markAsRead(this)">
+                        <div class="notification-content">
+                            <div class="notification-icon completed">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="notification-text">
+                                <div class="notification-title">تم إكمال مراجعة الطلب</div>
+                                <div class="notification-desc">طلب #ORD-2025-140 تم إغلاقه بنجاح</div>
+                                <div class="notification-time">منذ ساعة</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="notification-item unread" onclick="markAsRead(this)">
+                        <div class="notification-content">
+                            <div class="notification-icon new-task">
+                                <i class="fas fa-plus"></i>
+                            </div>
+                            <div class="notification-text">
+                                <div class="notification-title">تم تعيين طلب جديد</div>
+                                <div class="notification-desc">طلب #ORD-2025-004 من مجموعة الشرق للاستثمار</div>
+                                <div class="notification-time">منذ ساعتين</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-4 text-center border-t">
+                        <a href="#" class="text-sm text-blue-500 hover:text-blue-700">عرض جميع الإشعارات</a>
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center space-x-2">
+                <img class="w-10 h-10 rounded-full border-2 border-yellow-400" src="https://i.pravatar.cc/100?img=8" alt="صورة المحاسب">
+                <div>
+                    <span class="font-semibold text-primary-color block">سارة محمود</span>
+                    <span class="text-xs text-gray-500">محاسبة رئيسية</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="p-6">
+    <!-- Profile Header -->
+    <div class="profile-header" data-aos="fade-up">
+        <div class="relative z-10">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <img class="profile-avatar" src="https://i.pravatar.cc/200?img=8" alt="سارة محمود">
+                    <div class="mr-6">
+                        <h2 class="text-3xl font-bold mb-2">سارة محمود علي</h2>
+                        <p class="text-xl opacity-90 mb-3">محاسبة رئيسية - قسم المحاسبة</p>
+                       
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button class="action-btn btn-primary" onclick="editProfile()">
+                        <i class="fas fa-edit"></i>
+                        تحرير الملف الشخصي
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Left Column -->
+        <div class="lg:col-span-2">
+            <!-- Personal Information -->
+            <div class="profile-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="card-header">
+                    <h3 class="text-xl font-bold flex items-center">
+                        <i class="fas fa-user ml-2"></i>
+                        المعلومات الشخصية
+                    </h3>
+                </div>
+                <div class="card-content">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="form-group">
+                            <label class="form-label">الاسم الكامل</label>
+                            <input type="text" class="form-input" value="سارة محمود علي" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">المنصب</label>
+                            <input type="text" class="form-input" value="محاسبة رئيسية" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">رقم الموظف</label>
+                            <input type="text" class="form-input" value="EMP-ACC-008" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">القسم</label>
+                            <input type="text" class="form-input" value="المحاسبة والمالية" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">البريد الإلكتروني</label>
+                            <input type="email" class="form-input" value="sara.mahmoud@armen-shipping.com">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">رقم الهاتف</label>
+                            <input type="tel" class="form-input" value="+962 79 555 1234">
+                        </div>
+                    </div>
+                    <div class="flex space-x-4 mt-6">
+                        <button class="action-btn btn-success" onclick="saveChanges()">
+                            <i class="fas fa-save"></i>
+                            حفظ التغييرات
+                        </button>
+                        <button class="action-btn btn-secondary" onclick="changePassword()">
+                            <i class="fas fa-key"></i>
+                            تغيير كلمة المرور
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        
+
+@section Scripts {
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="~/js/Accounting/Profile.js" asp-append-version="true"></script>
+}

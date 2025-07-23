@@ -1,0 +1,144 @@
+@{
+    ViewData["Title"] = "حاسبة الشحن والتخليص الجمركي";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/css/calculator.css" asp-append-version="true" />
+}
+@section Scripts {
+    <script src="~/js/calculator.js" asp-append-version="true"></script>
+}
+<div class="inner-hero">
+    <div class="inner-hero-overlay"></div>
+    <div class="container">
+        <div class="inner-hero-content">
+            <h1>حاسبة الشحن والتخليص الجمركي</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">الرئيسية</a></li>
+                    <li class="breadcrumb-item active">حاسبة الشحن والتخليص الجمركي</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<div class="calculator-section">
+    <div class="container">
+        <div class="calculator-form-container">
+            <div class="form-card">
+                <div class="form-card-header">
+                    @* <div class="header-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div> *@
+                    <h3>أدخل بيانات الشحنة</h3>
+                </div>
+                
+                <form id="shipping-form" class="calculator-form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="origin">المنشأ (الصين)</label>
+                            <select id="origin" name="origin" class="form-control">
+                                <option value="Yiwu">Yiwu</option>
+                                <option value="Guangzhou">Guangzhou</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="destination">الوجهة (فلسطين)</label>
+                            <select id="destination" name="destination" class="form-control">
+                                <option>جنين</option>
+                                <option>رام الله</option>
+                                <option>نابلس</option>
+                                <option>الخليل</option>
+                                <option>بيت لحم</option>
+                                <option>القدس</option>
+                                <option>غزة</option>
+                                <option>طولكرم</option>
+                                <option>قلقيلية</option>
+                                <option>أريحا</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="item-type">نوع البضاعة</label>
+                            <input type="text" id="item-type" class="form-control" placeholder="مثال: إلكترونيات، ملابس..." required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="length">الطول (سم)</label>
+                            <input type="number" id="length" class="form-control" min="1" placeholder="0" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="width">العرض (سم)</label>
+                            <input type="number" id="width" class="form-control" min="1" placeholder="0" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="height">الارتفاع (سم)</label>
+                            <input type="number" id="height" class="form-control" min="1" placeholder="0" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cartons">عدد الكراتين</label>
+                            <input type="number" id="cartons" class="form-control" min="1" placeholder="0" required>
+                        </div>
+
+                        <div class="form-group col-span-2">
+                            <label for="weight">الوزن الإجمالي (كجم)</label>
+                            <input type="number" id="weight" class="form-control" min="1" placeholder="0" required>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">
+                            <span>احسب</span>
+                        </button>
+                    </div>
+                </form>
+
+                <div class="alert alert-info">
+                    <div class="alert-icon">
+                        <i class="fas fa-info-circle"></i>
+                    </div>
+                    <div class="alert-content">
+                        <h4>ملاحظة هامة</h4>
+                        <p>أسعار الشحن تتغير بشكل دوري حسب ظروف السوق والطلب</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Calculation Loader -->
+<div id="calculation-loader" class="calculation-loader">
+    <div class="loader-content">
+        <div class="icon-loader">
+            <i class="fas fa-plane"></i>
+            <div class="loader-path"></div>
+        </div>
+        <p>جاري حساب التكلفة...</p>
+    </div>
+</div>
+
+<!-- Results Modal -->
+<div class="modal fade" id="resultsModal" tabindex="-1" aria-labelledby="resultsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close ms-0" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="shipment-details">
+                </div>
+                <div class="cost-summary">
+                    <div class="summary-row total-cost">
+                        <span>التكلفة التقديرية:</span>
+                        <span id="total-cost" class="value">$0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 

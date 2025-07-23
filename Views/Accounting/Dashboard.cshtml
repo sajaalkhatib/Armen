@@ -1,0 +1,289 @@
+﻿@{
+    ViewData["Title"] = "لوحة التحكم المحاسبية";
+    Layout = "~/Views/Shared/_AccountingLayout.cshtml";
+}
+
+@section Styles {
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/Accounting/Dashboard.css" asp-append-version="true">
+}
+
+<!-- Top Navigation -->
+<nav class="bg-white shadow-sm p-4 mb-8" data-aos="fade-down">
+    <div class="flex justify-between items-center">
+        <h1 class="text-2xl font-bold text-primary-color flex items-center">
+            <i class="fas fa-calculator text-yellow-500 ml-3"></i>
+            لوحة التحكم المحاسبية
+        </h1>
+        <div class="flex items-center space-x-4">
+            <div class="relative">
+                <button class="p-2 text-gray-600 hover:text-gold-color transition-colors">
+                    <i class="fas fa-bell text-xl"></i>
+                    <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">5</span>
+                </button>
+            </div>
+            <div class="flex items-center space-x-2">
+                <img class="w-10 h-10 rounded-full border-2 border-yellow-400" src="https://i.pravatar.cc/100?img=8" alt="صورة المحاسب">
+                <div>
+                    <span class="font-semibold text-primary-color block">سارة محمود</span>
+                    <span class="text-xs text-gray-500">محاسبة رئيسية</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="p-6">
+    <!-- Welcome Section -->
+    <div class="accounting-welcome" data-aos="fade-up">
+        <div class="relative z-10">
+            <h2 class="text-2xl font-bold mb-2">مرحباً بك في القسم المحاسبي</h2>
+            <p class="opacity-90 mb-4">مراجعة وإغلاق الطلبات من الناحية المالية</p>
+        </div>
+    </div>
+
+   
+    <!-- Accounting Tasks Management -->
+    <div class="accounting-tabs" data-aos="fade-up" data-aos-delay="300">
+        <div class="tab-header">
+            <button class="tab-button active" onclick="switchTab(event, 'pendingReview')">
+                <i class="fas fa-clock ml-2"></i>
+                مهام بانتظار المراجعة
+                <span class="bg-red-500 text-white text-xs px-2 py-1 rounded-full mr-2">18</span>
+            </button>
+            <button class="tab-button" onclick="switchTab(event, 'closedTasks')">
+                <i class="fas fa-check-circle ml-2"></i>
+                مهام مغلقة ماليًا
+                <span class="bg-green-500 text-white text-xs px-2 py-1 rounded-full mr-2">142</span>
+            </button>
+        </div>
+
+        <!-- Pending Review Tab -->
+        <div id="pendingReview" class="tab-content active">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-bold text-primary-color">المهام بانتظار المراجعة المالية</h3>
+                <div class="flex space-x-3">
+                    <select class="border border-gray-300 rounded-lg px-3 py-2 text-sm">
+                        <option value="">ترتيب حسب</option>
+                        <option value="date">تاريخ الإحالة</option>
+                        <option value="amount">المبلغ</option>
+                    </select>
+                    <button class="accounting-action-btn btn-audit">
+                        <i class="fas fa-filter"></i>
+                        فلترة
+                    </button>
+                </div>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="accounting-table">
+                    <thead>
+                        <tr>
+                            <th>رقم الطلب</th>
+                            <th>اسم الزبون</th>
+                            <th>تاريخ الإحالة</th>
+                            <th>المبلغ المتوقع</th>
+                            <th>الحالة</th>
+                            <th>الإجراءات</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="font-bold text-primary-color">#ORD-2025-001</td>
+                            <td>
+                                <div class="flex items-center">
+                                    <img class="w-8 h-8 rounded-full ml-2" src="https://i.pravatar.cc/100?img=1" alt="">
+                                    شركة النخبة التجارية
+                                </div>
+                            </td>
+                            <td>2025-07-20</td>
+                            <td class="currency-display font-semibold">$ 2,450</td>
+                            <td><span class="status-ready-audit">جاهزة للتدقيق</span></td>
+                            <td>
+                                <div class="flex space-x-2">
+                                    <a asp-controller="Accounting" asp-action="Tasks" asp-route-id="1" class="accounting-action-btn btn-audit text-sm">
+                                        <i class="fas fa-search-dollar"></i>
+                                        فتح للتدقيق
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold text-primary-color">#ORD-2025-002</td>
+                            <td>
+                                <div class="flex items-center">
+                                    <img class="w-8 h-8 rounded-full ml-2" src="https://i.pravatar.cc/100?img=2" alt="">
+                                    مؤسسة الأمل للاستيراد
+                                </div>
+                            </td>
+                            <td>2025-07-19</td>
+                            <td class="currency-display font-semibold">$ 1,875</td>
+                            <td><span class="status-pending-review">بانتظار تقرير الشحن</span></td>
+                            <td>
+                                <div class="flex space-x-2">
+                                    <a asp-controller="Accounting" asp-action="Tasks" asp-route-id="2" class="accounting-action-btn btn-view-details text-sm">
+                                        <i class="fas fa-eye"></i>
+                                        عرض التفاصيل
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold text-primary-color">#ORD-2025-003</td>
+                            <td>
+                                <div class="flex items-center">
+                                    <img class="w-8 h-8 rounded-full ml-2" src="https://i.pravatar.cc/100?img=3" alt="">
+                                    شركة الرائد للتجارة
+                                </div>
+                            </td>
+                            <td>2025-07-18</td>
+                            <td class="currency-display font-semibold">$ 3,200</td>
+                            <td><span class="status-ready-audit">جاهزة للتدقيق</span></td>
+                            <td>
+                                <div class="flex space-x-2">
+                                    <a asp-controller="Accounting" asp-action="Tasks" asp-route-id="3" class="accounting-action-btn btn-audit text-sm">
+                                        <i class="fas fa-search-dollar"></i>
+                                        فتح للتدقيق
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold text-primary-color">#ORD-2025-004</td>
+                            <td>
+                                <div class="flex items-center">
+                                    <img class="w-8 h-8 rounded-full ml-2" src="https://i.pravatar.cc/100?img=4" alt="">
+                                    مجموعة الشرق للاستثمار
+                                </div>
+                            </td>
+                            <td>2025-07-17</td>
+                            <td class="currency-display font-semibold">$ 4,680</td>
+                            <td><span class="status-pending-review">بانتظار تقرير الشحن</span></td>
+                            <td>
+                                <div class="flex space-x-2">
+                                    <a asp-controller="Accounting" asp-action="Tasks" asp-route-id="4" class="accounting-action-btn btn-view-details text-sm">
+                                        <i class="fas fa-eye"></i>
+                                        عرض التفاصيل
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Closed Tasks Tab -->
+        <div id="closedTasks" class="tab-content">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-bold text-primary-color">أرشيف المهام المغلقة ماليًا</h3>
+                <div class="flex space-x-3">
+                    <input type="date" class="border border-gray-300 rounded-lg px-3 py-2 text-sm">
+                    <select class="border border-gray-300 rounded-lg px-3 py-2 text-sm">
+                        <option value="">جميع الشهور</option>
+                        <option value="2025-07">يوليو 2025</option>
+                        <option value="2025-06">يونيو 2025</option>
+                        <option value="2025-05">مايو 2025</option>
+                    </select>
+                    <button class="accounting-action-btn btn-audit">
+                        <i class="fas fa-download"></i>
+                        تصدير
+                    </button>
+                </div>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="accounting-table">
+                    <thead>
+                        <tr>
+                            <th>رقم الطلب</th>
+                            <th>اسم الزبون</th>
+                            <th>تاريخ الإغلاق</th>
+                            <th>التكلفة الإجمالية</th>
+                            <th>نسبة الأرباح</th>
+                            <th>قيمة الأرباح</th>
+                            <th>الإجراءات</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="font-bold text-primary-color">#ORD-2025-142</td>
+                            <td>
+                                <div class="flex items-center">
+                                    <img class="w-8 h-8 rounded-full ml-2" src="https://i.pravatar.cc/100?img=5" alt="">
+                                    شركة الأندلس التجارية
+                                </div>
+                            </td>
+                            <td>2025-07-19</td>
+                            <td class="currency-display font-semibold">$ 2,100</td>
+                            <td class="font-semibold text-green-600">15%</td>
+                            <td class="currency-display font-bold text-green-600">$ 315</td>
+                            <td>
+                                <div class="flex space-x-2">
+                                    <button class="text-blue-500 hover:text-blue-700 p-1" title="عرض التفاصيل">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="text-green-500 hover:text-green-700 p-1" title="تحميل التقرير">
+                                        <i class="fas fa-download"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold text-primary-color">#ORD-2025-141</td>
+                            <td>
+                                <div class="flex items-center">
+                                    <img class="w-8 h-8 rounded-full ml-2" src="https://i.pravatar.cc/100?img=6" alt="">
+                                    مجموعة النصر للاستثمار
+                                </div>
+                            </td>
+                            <td>2025-07-18</td>
+                            <td class="currency-display font-semibold">$ 3,450</td>
+                            <td class="font-semibold text-green-600">12%</td>
+                            <td class="currency-display font-bold text-green-600">$ 414</td>
+                            <td>
+                                <div class="flex space-x-2">
+                                    <button class="text-blue-500 hover:text-blue-700 p-1" title="عرض التفاصيل">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="text-green-500 hover:text-green-700 p-1" title="تحميل التقرير">
+                                        <i class="fas fa-download"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold text-primary-color">#ORD-2025-140</td>
+                            <td>
+                                <div class="flex items-center">
+                                    <img class="w-8 h-8 rounded-full ml-2" src="https://i.pravatar.cc/100?img=7" alt="">
+                                    شركة الخليج للتجارة
+                                </div>
+                            </td>
+                            <td>2025-07-17</td>
+                            <td class="currency-display font-semibold">$ 1,890</td>
+                            <td class="font-semibold text-green-600">18%</td>
+                            <td class="currency-display font-bold text-green-600">$ 340</td>
+                            <td>
+                                <div class="flex space-x-2">
+                                    <button class="text-blue-500 hover:text-blue-700 p-1" title="عرض التفاصيل">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="text-green-500 hover:text-green-700 p-1" title="تحميل التقرير">
+                                        <i class="fas fa-download"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="~/js/Accounting/Dashboard.js" asp-append-version="true"></script>
+}

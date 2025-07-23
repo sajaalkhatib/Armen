@@ -1,0 +1,480 @@
+@{
+    ViewData["Title"] = "خدماتنا";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/services.css" asp-append-version="true" />
+}
+
+@section Scripts {
+    <script src="~/js/services.js" asp-append-version="true"></script>
+}
+
+<div class="inner-hero">
+    <div class="inner-hero-overlay"></div>
+    <div class="container">
+        <div class="inner-hero-content">
+            <h1>خدماتنا</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">الرئيسية</a></li>
+                    <li class="breadcrumb-item active">خدماتنا</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<!-- Services Grid Section -->
+<section class="services-section">
+    <div class="container">
+        <div class="section-header text-center">
+            <h2>اختر الخدمة التي تحتاجها واترك الباقي علينا</h2>
+            <p>خدمات السفر إلى الصين</p>
+
+        </div>
+        
+        <div class="services-grid">
+            <!-- Service Card 1 -->
+            <div class="service-card" data-service="invitation">
+                <div class="service-icon">
+                    <i class="fas fa-envelope-open-text"></i>
+                </div>
+                <h3>طلب خطاب دعوة</h3>
+                <p>احصل على خطاب دعوة رسمي لزيارة الصين بكل سهولة. الخدمة متاحة مجانًا لعملائنا الحاليين.</p>
+                <div class="service-footer">
+                    <span class="service-time"><i class="fas fa-clock"></i> 24-48 ساعة</span>
+                    <button class="service-btn">اطلب الآن <i class="fas fa-arrow-left"></i></button>
+                </div>
+            </div>
+
+            <!-- Service Card 2 -->
+            <div class="service-card" data-service="visa">
+                <div class="service-icon">
+                    <i class="fas fa-passport"></i>
+                </div>
+                <h3>طلب تأشيرة دخول</h3>
+                <p>نساعدك في استخراج تأشيرة دخول للصين، سواء للسياحة أو العمل، ضمن خيارات عادية ومستعجلة.</p>
+                <div class="service-footer">
+                    <span class="service-time"><i class="fas fa-clock"></i> 3-7 أيام عمل</span>
+                    <button class="service-btn">اطلب الآن <i class="fas fa-arrow-left"></i></button>
+                </div>
+            </div>
+
+            <!-- Service Card 3 -->
+            <div class="service-card" data-service="flight">
+                <div class="service-icon">
+                    <i class="fas fa-plane"></i>
+                </div>
+                <h3>حجز تذاكر طيران</h3>
+                <p>اطلب عرض سعر لرحلتك من الأردن إلى الصين على أفضل الخطوط الجوية.</p>
+                <div class="service-footer">
+                    <span class="service-time"><i class="fas fa-clock"></i> فوري</span>
+                    <button class="service-btn">اطلب الآن <i class="fas fa-arrow-left"></i></button>
+                </div>
+            </div>
+
+            <!-- Service Card 4 -->
+            <div class="service-card" data-service="transfer">
+                <div class="service-icon">
+                    <i class="fas fa-car"></i>
+                </div>
+                <h3>النقل من المطار</h3>
+                <p>احجز خدمة استقبال بالمطار ونقلك إلى وجهتك بأمان داخل الصين.</p>
+                <div class="service-footer">
+                    <span class="service-time"><i class="fas fa-clock"></i> حجز مسبق</span>
+                    <button class="service-btn">اطلب الآن <i class="fas fa-arrow-left"></i></button>
+                </div>
+            </div>
+
+            <!-- Service Card 5 -->
+            <div class="service-card" data-service="hotel">
+                <div class="service-icon">
+                    <i class="fas fa-hotel"></i>
+                </div>
+                <h3>حجز فندق</h3>
+                <p>نوفر لك أفضل الفنادق في المدن الصينية الرئيسية بأسعار مناسبة.</p>
+                <div class="service-footer">
+                    <span class="service-time"><i class="fas fa-clock"></i> فوري</span>
+                    <button class="service-btn">اطلب الآن <i class="fas fa-arrow-left"></i></button>
+                </div>
+            </div>
+
+            <!-- Service Card 6 -->
+            <div class="service-card" data-service="translator">
+                <div class="service-icon">
+                    <i class="fas fa-language"></i>
+                </div>
+                <h3>حجز مترجم شخصي</h3>
+                <p>استعن بمترجم محترف يرافقك في الأسواق أو الاجتماعات لتسهيل التواصل.</p>
+                <div class="service-footer">
+                    <span class="service-time"><i class="fas fa-clock"></i> حجز مسبق</span>
+                    <button class="service-btn">اطلب الآن <i class="fas fa-arrow-left"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Why Choose Us Section -->
+<section class="features-section">
+    <div class="container">
+        <div class="features-content">
+            <div class="features-text">
+                <h2>لماذا تختارنا لرحلتك إلى الصين؟</h2>
+                <p>نحن نقدم أكثر من مجرد خدمات سفر، نقدم لك تجربة متكاملة تمنحك الراحة والاطمئنان</p>
+                
+                <div class="features-list">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <div class="feature-info">
+                            <h4>خبرة أكثر من 10 سنوات</h4>
+                            <p>نحن نعرف الصين جيداً ونساعدك في تجنب المشاكل الشائعة.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <div class="feature-info">
+                            <h4>فريق متحدث للصينية</h4>
+                            <p>فريقنا يتحدث الصينية بطلاقة لتسهيل جميع معاملاتك.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <div class="feature-info">
+                            <h4>أسعار تنافسية</h4>
+                            <p>نقدم أفضل الأسعار مع الحفاظ على جودة الخدمة.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="features-image">
+                <img src="https://images.unsplash.com/photo-1538970272646-f61fabb3a8a4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                     alt="الصين">
+                <div class="image-card">
+                    <h3>خدمة 24/7</h3>
+                    <p>فريق الدعم متاح على مدار الساعة لمساعدتك في أي وقت</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="testimonials-section">
+    <div class="container">
+        <div class="section-header text-center">
+            <h2>آراء عملائنا</h2>
+            <p>قصص نجاح نرويها بفخر من عملاء استخدموا خدماتنا للسفر إلى الصين</p>
+        </div>
+
+        <div class="testimonials-grid">
+            <!-- Testimonial 1 -->
+            <div class="testimonial-card">
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>"ساعدوني في الحصول على تأشيرة الصين خلال 3 أيام فقط! فريق محترف يعرف كل التفاصيل الدقيقة."</p>
+                <div class="testimonial-author">
+                    <img src="https://i.pravatar.cc/150?img=5" alt="صورة العميل">
+                    <div class="author-info">
+                        <strong>محمد عبد الرحمن</strong>
+                        <span>رجل أعمال</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial 2 -->
+            <div class="testimonial-card">
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>"المترجم الذي وفرته الشركة أنقذ رحلتي! ساعدني في التفاوض على أسعار جيدة في أسواق جوانزو."</p>
+                <div class="testimonial-author">
+                    <img src="https://i.pravatar.cc/150?img=11" alt="صورة العميلة">
+                    <div class="author-info">
+                        <strong>سارة أحمد</strong>
+                        <span>صاحبة متجر إلكتروني</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial 3 -->
+            <div class="testimonial-card">
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <p>"الفندق الذي حجزته لي الشركة كان ممتازاً وبنصف السعر الذي وجدته على الإنترنت! أوصي بجميع خدماتهم."</p>
+                <div class="testimonial-author">
+                    <img src="https://i.pravatar.cc/150?img=8" alt="صورة العميل">
+                    <div class="author-info">
+                        <strong>خالد الزعبي</strong>
+                        <span>مدير شركة استيراد</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section class="contact-section">
+    <div class="container">
+        <div class="contact-content">
+            <div class="contact-info">
+                <div>
+                    <h2>استعد لرحلتك إلى الصين</h2>
+                    <p>اترك تفاصيل رحلتك وسيتواصل معك خبير الصين خلال 24 ساعة لتقديم الحلول المناسبة لك.</p>
+                </div>
+
+                <div class="contact-details">
+                    <p><i class="fas fa-phone"></i> +962 123 456 789</p>
+                    <p><i class="fas fa-envelope"></i> china@arman-shipping.com</p>
+                    <p><i class="fas fa-clock"></i> خدمة العملاء متاحة 24/7</p>
+                </div>
+            </div>
+            
+            <div class="contact-form-container">
+                <form class="contact-form">
+                    <h3>تواصل معنا</h3>
+                    <div class="form-group">
+                        <input type="text" placeholder="الاسم الكامل" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="البريد الإلكتروني" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" placeholder="رقم الهاتف" required>
+                    </div>
+                    <div class="form-group">
+                        <select>
+                            <option value="">اختر الخدمة المطلوبة</option>
+                            <option value="visa">تأشيرة الصين</option>
+                            <option value="invitation">خطاب دعوة</option>
+                            <option value="flight">تذاكر طيران</option>
+                            <option value="hotel">حجز فندق</option>
+                            <option value="translator">مترجم شخصي</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea rows="4" placeholder="أخبرنا عن احتياجاتك ومواعيد سفرك..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary book-btn">إرسال الطلب</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section> 
+
+<!-- Service Modals -->
+<!-- Invitation Letter Modal -->
+<div class="service-modal" id="invitationModal">
+    <div class="modal-dialog">
+        <div class="modal-header">
+            <h3 class="modal-title">طلب خطاب دعوة</h3>
+            <button type="button" class="modal-close" data-modal-close>&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="form-info">
+                <p>هذه الخدمة <strong>مجانية لعملائنا الحاليين</strong> في خدمات الشحن، وبتكلفة <strong>200 شيكل</strong> للعملاء الجدد.</p>
+            </div>
+            
+            <form class="service-form" id="invitationForm">
+                <div class="form-group">
+                    <label class="form-label">هل أنت من عملائنا الحاليين؟</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="customer_type" value="existing">
+                            نعم، أنا عميل حالي
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="customer_type" value="new" checked>
+                            لا، أنا عميل جديد
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">صورة جواز السفر (JPG, PNG, PDF)</label>
+                    <input type="file" class="file-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">نوع جواز السفر</label>
+                    <select class="form-control" required>
+                        <option>عادي</option>
+                        <option>خاص</option>
+                        <option>دبلوماسي</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">تاريخ الوصول المتوقع</label>
+                    <input type="date" class="form-control" required>
+                </div>
+                
+                <div class="price-section">
+                    <p class="price-amount">المبلغ المطلوب: <span id="invitationPrice">200</span> شيكل</p>
+                </div>
+                
+                <button type="submit" class="submit-btn">إرسال الطلب</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Visa Modal -->
+<div class="service-modal" id="visaModal">
+    <div class="modal-dialog">
+        <div class="modal-header">
+            <h3 class="modal-title">طلب تأشيرة دخول</h3>
+            <button type="button" class="modal-close" data-modal-close>&times;</button>
+        </div>
+        <div class="modal-body">
+            <form class="service-form" id="visaForm">
+                <div class="form-group">
+                    <label class="form-label">اختر نوع الخدمة</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="service_tier" value="normal" checked>
+                            خدمة عادية (350 شيكل)
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="service_tier" value="urgent">
+                            خدمة مستعجلة (550 شيكل)
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">صورة جواز السفر</label>
+                    <input type="file" class="file-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">رقم الهاتف</label>
+                    <input type="tel" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">صورة شخصية (خلفية بيضاء)</label>
+                    <input type="file" class="file-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">صورة الهوية مع الملحق</label>
+                    <input type="file" class="file-input" required>
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label">تاريخ ميلاد الأب</label>
+                        <input type="date" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">تاريخ ميلاد الأم</label>
+                        <input type="date" class="form-control" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">هل حصلت على خطاب الدعوة من خلالنا؟</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="has_invitation" value="yes">
+                            نعم
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="has_invitation" value="no" checked>
+                            لا
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-group" id="visaInvitationField" style="display: none;">
+                    <label class="form-label">يرجى رفع خطاب الدعوة</label>
+                    <input type="file" class="file-input">
+                </div>
+                
+                <div class="price-section">
+                    <p class="price-amount">المبلغ المطلوب: <span id="visaPrice">350</span> شيكل</p>
+                </div>
+                
+                <button type="submit" class="submit-btn">إرسال الطلب</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Translator Modal -->
+<div class="service-modal" id="translatorModal">
+    <div class="modal-dialog">
+        <div class="modal-header">
+            <h3 class="modal-title">حجز مترجم شخصي</h3>
+            <button type="button" class="modal-close" data-modal-close>&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="form-info">
+                <p>التكلفة: <strong>150 شيكل/يوم</strong> (300 RMB) في الأوقات العادية، و <strong>300 شيكل/يوم</strong> (600 RMB) خلال فترات المعارض.</p>
+            </div>
+            
+            <form class="service-form" id="translatorForm">
+                <div class="form-group">
+                    <label class="form-label">اختر فترة الخدمة</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="period_type" value="normal" checked>
+                            أوقات عادية
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="period_type" value="exhibition">
+                            فترة معارض
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">تاريخ بدء الخدمة</label>
+                    <input type="date" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">عدد الأيام المطلوبة</label>
+                    <input type="number" min="1" value="1" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">المدينة أو السوق المطلوب</label>
+                    <input type="text" placeholder="مثال: سوق الفوتيان في Yiwu" class="form-control" required>
+                </div>
+                
+                <div class="price-section">
+                    <p class="price-amount">التكلفة الإجمالية: <span id="translatorPrice">150</span> شيكل</p>
+                </div>
+                
+                <button type="submit" class="submit-btn">إرسال الطلب</button>
+            </form>
+        </div>
+    </div>
+</div> 

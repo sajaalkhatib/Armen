@@ -1,0 +1,249 @@
+﻿@{
+    ViewData["Title"] = "ControlPanel";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/ControlPanel.css" asp-append-version="true" />
+}
+@section Scripts {
+    <script src="~/js/ControlPanel.js" asp-append-version="true"></script>
+}
+
+
+
+    <!-- الشريط العلوي -->
+    <div class="topbar">
+        <div class="d-flex justify-content-between w-100 flex-row-reverse">
+            <div class="user-dropdown" id="userDropdown">
+                <div class="dropdown-menu" id="dropdownMenu">
+                    <a class="dropdown-item" href="#" id="logoutBtn">تسجيل الخروج</a>
+                </div>
+            </div>
+            <button class="btn btn-link text-dark p-0 d-lg-none sidebar-toggler">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- البطاقات -->
+    <div class="container-fluid py-4">
+
+        <div class="row mb-4">
+            @* بطاقة واردات الشهر *@
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card stat-card">
+                    <div class="card-body d-flex justify-content-between">
+                        <div>
+                            <h6 class="mb-2 text-muted">واردات الشهر</h6>
+                            <h3 class="mb-0">150 حاوية</h3>
+                        </div>
+                        <div class="card-icon">
+                            <i class="fas fa-box-open"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @* بطاقة صادرات الشهر *@
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card stat-card">
+                    <div class="card-body d-flex justify-content-between">
+                        <div>
+                            <h6 class="mb-2 text-muted">صادرات الشهر</h6>
+                            <h3 class="mb-0">96 شحنة</h3>
+                        </div>
+                        <div class="card-icon primary">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @* معاملات جمركية *@
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card stat-card">
+                    <div class="card-body d-flex justify-content-between">
+                        <div>
+                            <h6 class="mb-2 text-muted">معاملات جمركية</h6>
+                            <h3 class="mb-0">320 معاملة</h3>
+                        </div>
+                        <div class="card-icon warning">
+                            <i class="fas fa-file-contract"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @* الإيرادات *@
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card stat-card">
+                    <div class="card-body d-flex justify-content-between">
+                        <div>
+                            <h6 class="mb-2 text-muted">الإيرادات الشهرية</h6>
+                            <h3 class="mb-0">$215,000</h3>
+                        </div>
+                        <div class="card-icon danger">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!-- الأداء السنوي + حالة الشحنات -->
+    <div class="row mb-4">
+        <div class="col-lg-8 d-flex">
+            <div class="card flex-grow-1">
+                <div class="card-header bg-white border-0">
+                    <h6 class="mb-0">أداء الشحن السنوي</h6>
+                </div>
+                <div class="card-body">
+                    <canvas id="annualChart"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 d-flex">
+            <div class="card flex-grow-1 h-100">
+                <div class="card-header bg-white border-0">
+                    <h6 class="mb-0">حالة الشحنات</h6>
+                </div>
+                <div class="card-body">
+                    @* حالة الشحنات برسوم بيانية *@
+                    @{
+                        var statuses = new[] {
+                                        new { Label = "تم التسليم", Value = 75, Class = "bg-success" },
+                                        new { Label = "قيد النقل", Value = 15, Class = "bg-warning" },
+                                        new { Label = "متأخرة", Value = 7, Class = "bg-danger" },
+                                        new { Label = "قيد التجهيز", Value = 3, Class = "bg-info" }
+                                        };
+                    }
+                    @foreach (var status in statuses)
+                    {
+                        <div class="mb-4">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>@status.Label</span>
+                                <span>@status.Value%</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar @status.Class" role="progressbar" style="width: @status.Value%"></div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- تتبع الشاحنات + الطقس -->
+    <div class="row">
+        <!-- تتبع الشاحنات -->
+        <div class="col-lg-6 mb-4 d-flex">
+            <div class="card tracking flex-grow-1" style="background-color: #b8cff2;">
+                <div class="card-body d-flex flex-column">
+                    <div class="d-flex justify-content-between mb-4">
+                        <h5 class="text-white mb-0">تتبع الشاحنات</h5>
+                        <button class="btn btn-sm btn-outline-light">
+                            <i class="fas fa-plus me-1"></i> إضافة
+                        </button>
+                    </div>
+                    <div class="table-responsive flex-grow-1">
+                        <table class="table text-black">
+                            <thead>
+                                <tr>
+                                    <th>رقم الشاحنة</th>
+                                    <th>الموقع</th>
+                                    <th>الوجهة</th>
+                                    <th>الحالة</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>TRK-001</td>
+                                    <td>الخليل</td>
+                                    <td>رام الله</td>
+                                    <td><span class="badge bg-warning">قيد النقل</span></td>
+                                </tr>
+                                <tr>
+                                    <td>TRK-002</td>
+                                    <td>بكين</td>
+                                    <td>شانغهاي</td>
+                                    <td><span class="badge bg-success">تم التوصيل</span></td>
+                                </tr>
+                                <tr>
+                                    <td>TRK-003</td>
+                                    <td>نابلس</td>
+                                    <td>جنين</td>
+                                    <td><span class="badge bg-danger">تأخير</span></td>
+                                </tr>
+                                <tr>
+                                    <td>TRK-004</td>
+                                    <td>غوانزو</td>
+                                    <td>هونغ كونغ</td>
+                                    <td><span class="badge bg-info">قيد التحميل</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- حالة الطقس -->
+        <div class="col-lg-6 mb-4 d-flex">
+            <div class="card weather text-white flex-grow-1" style="background: linear-gradient(135deg, #E74C3C, #C0392B);">
+                <div class="card-body d-flex flex-column">
+                    <div class="d-flex justify-content-between mb-4">
+                        <h5 class="mb-0">حالة الطقس</h5>
+                        <div class="btn-group btn-group-sm">
+                            <button class="btn btn-outline-light active">فلسطين</button>
+                            <button class="btn btn-outline-light">الصين</button>
+                        </div>
+                    </div>
+
+                    <div class="text-center mb-4">
+                        <h2>الخليل, فلسطين</h2>
+                        <div class="d-flex justify-content-center align-items-center">
+                            <i class="fas fa-sun fa-3x text-warning me-3"></i>
+                            <h1 class="mb-0">31°C</h1>
+                        </div>
+                        <p class="text-white-50">مشمس • رطوبة 45%</p>
+                    </div>
+
+                    <div class="row text-center">
+                        <div class="col">
+                            <p>السبت</p>
+                            <i class="fas fa-sun text-warning"></i>
+                            <p>31°</p>
+                        </div>
+                        <div class="col">
+                            <p>الأحد</p>
+                            <i class="fas fa-cloud text-white"></i>
+                            <p>29°</p>
+                        </div>
+                        <div class="col">
+                            <p>الإثنين</p>
+                            <i class="fas fa-cloud-rain text-white"></i>
+                            <p>27°</p>
+                        </div>
+                        <div class="col">
+                            <p>الثلاثاء</p>
+                            <i class="fas fa-sun text-warning"></i>
+                            <p>30°</p>
+                        </div>
+                        <div class="col">
+                            <p>الأربعاء</p>
+                            <i class="fas fa-cloud text-white"></i>
+                            <p>28°</p>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-warning mt-auto">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        أمطار متوقعة يوم الإثنين - ينصح بتأجيل الشحنات البرية
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
